@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syndykate_10к — Официальный сайт</title>
+    <style>
+        :root {
+            --bg-page: #0a0a0b; 
+            --bg-container: #141416; 
+            --bg-sidebar: rgba(255, 255, 255, 0.02);
+            --accent: #ffffff; 
+            --text-main: #ffffff; 
+            --text-muted: #808086;
+            --border: rgba(255, 255, 255, 0.08); 
+            --radius: 16px;
+            --android-green: #3DDC84;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .top-header { text-align: center; margin-bottom: 50px; max-width: 600px; }
+        .welcome { text-transform: uppercase; font-weight: 600; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; }
+        h1 { font-size: 52px; margin: 0 0 15px 0; letter-spacing: -2px; font-weight: 800; }
+        .subtitle { color: var(--text-muted); font-size: 16px; line-height: 1.5; }
+
+        .search-section { margin-top: 30px; width: 100%; max-width: 450px; }
+        .search-wrapper { display: flex; gap: 10px; }
+        input[type="text"] { flex-grow: 1; padding: 14px 20px; background: var(--bg-container); border: 1px solid var(--border); border-radius: 12px; color: white; outline: none; transition: 0.3s; }
+        input[type="text"]:focus { border-color: rgba(255,255,255,0.3); }
+        .search-btn { padding: 0 24px; background: white; color: black; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
+
+        .app-container {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            background: var(--bg-container);
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            min-height: 600px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        .sidebar { width: 300px; padding: 24px; background: var(--bg-sidebar); border-right: 1px solid var(--border); overflow-y: auto; }
+        .menu-list { display: flex; flex-direction: column; gap: 8px; }
+        .menu-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 18px; background: transparent; border: 1px solid transparent;
+            border-radius: 12px; color: var(--text-muted); font-size: 14px; font-weight: 500;
+            cursor: pointer; transition: 0.2s; text-align: left;
+        }
+        .menu-item:hover { background: rgba(255,255,255,0.05); color: white; }
+        .menu-item.active { background: white; color: black; }
+        
+        /* Кнопка приложения выделена цветом */
+        .menu-item.app-btn { border-color: rgba(61, 220, 132, 0.2); color: var(--android-green); margin-top: 10px; }
+        .menu-item.app-btn.active { background: var(--android-green); color: black; }
+
+        .content-display { flex-grow: 1; padding: 60px; overflow-y: auto; }
+        #info-box { transition: opacity 0.2s ease; }
+        #info-box h2 { font-size: 42px; margin-bottom: 20px; letter-spacing: -1.5px; }
+        #info-box p { font-size: 18px; line-height: 1.7; color: var(--text-muted); max-width: 500px; }
+
+        .card { margin-top: 30px; padding: 30px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid var(--border); }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 12px; background: var(--android-green);
+            color: #000; text-decoration: none; padding: 16px 32px; border-radius: 14px;
+            font-weight: 700; font-size: 18px; transition: 0.2s;
+        }
+        .download-btn:hover { transform: scale(1.03); background: #32c675; }
+
+        .site-footer { margin: 50px 0; display: flex; justify-content: center; }
+        .tg-link {
+            display: flex; align-items: center; gap: 12px; color: var(--text-muted);
+            text-decoration: none; font-size: 14px; padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+            border-radius: 100px; transition: 0.3s;
+        }
+        .tg-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+        @media (max-width: 768px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+            h1 { font-size: 38px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-header">
+        <p class="welcome">welcome</p>
+        <h1>Syndykate_10к</h1>
+        <p class="subtitle">Ваш центр управления, новостей и инструкций.</p>
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" id="search" placeholder="Поиск по разделам..." onkeyup="filterMenu()">
+                <button class="search-btn">поиск</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="menu-list">
+                <button class="menu-item active" onclick="showContent('about')">О нас <span>+</span></button>
+                <button class="menu-item" onclick="showContent('news')">Новости <span>+</span></button>
+                <button class="menu-item" onclick="showContent('faq')">Частые вопросы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('usdt')">Вывод USDT <span>+</span></button>
+                <button class="menu-item" onclick="showContent('coins')">Сдача монет <span>+</span></button>
+                <button class="menu-item" onclick="showContent('ref')">Рефералы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('rank')">Ранг <span>+</span></button>
+                <button class="menu-item" onclick="showContent('bonus')">Бонусы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('support')">Тех. поддержка <span>+</span></button>
+                <button class="menu-item app-btn" onclick="showContent('app')">Наше приложение <span>+</span></button>
+            </nav>
+        </aside>
+
+        <main class="content-display">
+            <div id="info-box">
+                <h2>О нас</h2>
+                <p>Добро пожаловать в Syndykate_10к. Выберите интересующий раздел в левом меню для получения информации.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <a href="https://t.me" target="_blank" class="tg-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .33z"/></svg>
+            мы в телеграмм
+        </a>
+    </footer>
+
+    <script>
+        const directDownloadLink = "https://google.com";
+
+        const data = {
+            about: { title: "О нас", text: "Проект Syndykate_10к — профессиональное сообщество и современные инструменты для работы." },
+            news: { title: "Новости", text: "Все актуальные новости и события сообщества теперь доступны в этом разделе." },
+            faq: { title: "Частые вопросы", text: "Здесь собраны ответы на популярные вопросы о работе системы и выплатах." },
+            usdt: { title: "Вывод USDT", text: "Минимальный порог — 10 USDT. Вывод производится через сеть Tron (TRC-20)." },
+            coins: { title: "Сдача монет", text: "Инструкция по сдаче монет доступна внутри мобильного приложения." },
+            ref: { title: "Рефералы", text: "Партнерская программа: 10% от прибыли приглашенных участников." },
+            rank: { title: "Ранг", text: "Повышайте статус активности для получения бонусов и приоритетной поддержки." },
+            bonus: { title: "Бонусы", text: "Информация о текущих акциях и ежедневных наградах для активных пользователей." },
+            support: { title: "Тех. поддержка", text: "Мы на связи 24/7. Напишите нам в Telegram для решения любого вопроса." },
+            app: { 
+                title: "Наше приложение", 
+                text: "Официальное Android-приложение Syndykate_10к. Безопасная установка через APK-файл.",
+                isApp: true 
+            }
+        };
+
+        function showContent(key) {
+            const box = document.getElementById('info-box');
+            box.style.opacity = 0;
+            
+            setTimeout(() => {
+                let contentHTML = `<h2>${data[key].title}</h2><p>${data[key].text}</p>`;
+                if (data[key].isApp) {
+                    contentHTML += `
+                        <div class="card">
+                            <a href="${directDownloadLink}" target="_blank" class="download-btn">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M17.523 15.3414L12 20.8644L6.477 15.3414L7.891 13.9274L11 17.0364V3H13V17.0364L16.109 13.9274L17.523 15.3414Z"/></svg>
+                                Скачать приложение
+                            </a>
+                        </div>`;
+                }
+                box.innerHTML = contentHTML;
+                box.style.opacity = 1;
+            }, 200);
+
+            document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('active'));
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+            }
+        }
+
+        function filterMenu() {
+            let input = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('.menu-item').forEach(btn => {
+                btn.style.display = btn.innerText.toLowerCase().includes(input) ? "flex" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
