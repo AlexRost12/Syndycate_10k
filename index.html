@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syndykate_10к — Официальный сайт</title>
+    <title>Syndycate_10к — Официальный сайт</title>
     <style>
         :root {
             --bg-page: #0a0a0b; 
@@ -29,15 +29,14 @@
             min-height: 100vh;
         }
 
-        .top-header { text-align: center; margin-bottom: 50px; max-width: 600px; }
+        .top-header { text-align: center; margin-bottom: 40px; width: 100%; max-width: 600px; }
         .welcome { text-transform: uppercase; font-weight: 600; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 10px; }
-        h1 { font-size: 52px; margin: 0 0 15px 0; letter-spacing: -2px; font-weight: 800; }
+        h1 { font-size: clamp(32px, 8vw, 52px); margin: 0 0 15px 0; letter-spacing: -2px; font-weight: 800; }
         .subtitle { color: var(--text-muted); font-size: 16px; line-height: 1.5; }
 
-        .search-section { margin-top: 30px; width: 100%; max-width: 450px; }
+        .search-section { margin-top: 25px; width: 100%; }
         .search-wrapper { display: flex; gap: 10px; }
-        input[type="text"] { flex-grow: 1; padding: 14px 20px; background: var(--bg-container); border: 1px solid var(--border); border-radius: 12px; color: white; outline: none; transition: 0.3s; }
-        input[type="text"]:focus { border-color: rgba(255,255,255,0.3); }
+        input[type="text"] { flex-grow: 1; padding: 14px 20px; background: var(--bg-container); border: 1px solid var(--border); border-radius: 12px; color: white; outline: none; transition: 0.3s; width: 100%; }
         .search-btn { padding: 0 24px; background: white; color: black; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; }
 
         .app-container {
@@ -58,41 +57,33 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 14px 18px; background: transparent; border: 1px solid transparent;
             border-radius: 12px; color: var(--text-muted); font-size: 14px; font-weight: 500;
-            cursor: pointer; transition: 0.2s; text-align: left;
+            cursor: pointer; transition: 0.2s; text-align: left; width: 100%;
         }
         .menu-item:hover { background: rgba(255,255,255,0.05); color: white; }
         .menu-item.active { background: white; color: black; }
-        
-        /* Кнопка приложения выделена цветом */
         .menu-item.app-btn { border-color: rgba(61, 220, 132, 0.2); color: var(--android-green); margin-top: 10px; }
         .menu-item.app-btn.active { background: var(--android-green); color: black; }
 
-        .content-display { flex-grow: 1; padding: 60px; overflow-y: auto; }
+        .content-display { flex-grow: 1; padding: 50px; overflow-y: auto; text-align: left; }
         #info-box { transition: opacity 0.2s ease; }
-        #info-box h2 { font-size: 42px; margin-bottom: 20px; letter-spacing: -1.5px; }
-        #info-box p { font-size: 18px; line-height: 1.7; color: var(--text-muted); max-width: 500px; }
+        #info-box h2 { font-size: clamp(24px, 5vw, 42px); margin-bottom: 20px; letter-spacing: -1.5px; color: var(--accent); }
+        #info-box p { font-size: 17px; line-height: 1.7; color: var(--text-muted); margin-bottom: 20px; }
+        
+        .benefits-list { list-style: none; padding: 0; margin: 0; }
+        .benefits-list li { margin-bottom: 20px; color: var(--text-muted); font-size: 16px; line-height: 1.6; }
+        .benefits-list b { color: var(--text-main); display: block; margin-bottom: 5px; }
 
-        .card { margin-top: 30px; padding: 30px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid var(--border); }
-        .download-btn {
-            display: inline-flex; align-items: center; gap: 12px; background: var(--android-green);
-            color: #000; text-decoration: none; padding: 16px 32px; border-radius: 14px;
-            font-weight: 700; font-size: 18px; transition: 0.2s;
-        }
-        .download-btn:hover { transform: scale(1.03); background: #32c675; }
+        .card { margin-top: 25px; padding: 25px; background: rgba(255, 255, 255, 0.03); border-radius: 20px; border: 1px solid var(--border); }
+        .download-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--android-green); color: #000; text-decoration: none; padding: 16px 32px; border-radius: 14px; font-weight: 700; font-size: 18px; transition: 0.2s; }
 
-        .site-footer { margin: 50px 0; display: flex; justify-content: center; }
-        .tg-link {
-            display: flex; align-items: center; gap: 12px; color: var(--text-muted);
-            text-decoration: none; font-size: 14px; padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-            border-radius: 100px; transition: 0.3s;
-        }
-        .tg-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+        .site-footer { margin: 40px 0; }
+        .tg-link { display: flex; align-items: center; gap: 12px; color: var(--text-muted); text-decoration: none; font-size: 14px; padding: 12px 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 100px; transition: 0.3s; }
 
         @media (max-width: 768px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
-            h1 { font-size: 38px; }
+            body { padding: 15px; }
+            .app-container { flex-direction: column; border-radius: 20px; min-height: auto; }
+            .sidebar { width: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 15px; max-height: 350px; }
+            .content-display { padding: 25px 15px; }
         }
     </style>
 </head>
@@ -100,7 +91,7 @@
 
     <header class="top-header">
         <p class="welcome">welcome</p>
-        <h1>Syndykate_10к</h1>
+        <h1>Syndycate_10к</h1>
         <p class="subtitle">Ваш центр управления, новостей и инструкций.</p>
         <div class="search-section">
             <div class="search-wrapper">
@@ -112,24 +103,23 @@
 
     <div class="app-container">
         <aside class="sidebar">
-            <nav class="menu-list">
-                <button class="menu-item active" onclick="showContent('about')">О нас <span>+</span></button>
-                <button class="menu-item" onclick="showContent('news')">Новости <span>+</span></button>
-                <button class="menu-item" onclick="showContent('faq')">Частые вопросы <span>+</span></button>
-                <button class="menu-item" onclick="showContent('usdt')">Вывод USDT <span>+</span></button>
-                <button class="menu-item" onclick="showContent('coins')">Сдача монет <span>+</span></button>
-                <button class="menu-item" onclick="showContent('ref')">Рефералы <span>+</span></button>
-                <button class="menu-item" onclick="showContent('rank')">Ранг <span>+</span></button>
-                <button class="menu-item" onclick="showContent('bonus')">Бонусы <span>+</span></button>
-                <button class="menu-item" onclick="showContent('support')">Тех. поддержка <span>+</span></button>
-                <button class="menu-item app-btn" onclick="showContent('app')">Наше приложение <span>+</span></button>
+            <nav class="menu-list" id="menu-list">
+                <button class="menu-item active" onclick="showContent('about', this)">О нас <span>+</span></button>
+                <button class="menu-item" onclick="showContent('news', this)">Новости <span>+</span></button>
+                <button class="menu-item" onclick="showContent('faq', this)">Частые вопросы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('usdt', this)">Вывод USDT <span>+</span></button>
+                <button class="menu-item" onclick="showContent('coins', this)">Сдача монет <span>+</span></button>
+                <button class="menu-item" onclick="showContent('ref', this)">Рефералы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('rank', this)">Ранг <span>+</span></button>
+                <button class="menu-item" onclick="showContent('bonus', this)">Бонусы <span>+</span></button>
+                <button class="menu-item" onclick="showContent('support', this)">Тех. поддержка <span>+</span></button>
+                <button class="menu-item app-btn" onclick="showContent('app', this)">Наше приложение <span>+</span></button>
             </nav>
         </aside>
 
         <main class="content-display">
             <div id="info-box">
-                <h2>О нас</h2>
-                <p>Добро пожаловать в Syndykate_10к. Выберите интересующий раздел в левом меню для получения информации.</p>
+                <!-- Контент загрузится через JS -->
             </div>
         </main>
     </div>
@@ -142,48 +132,141 @@
     </footer>
 
     <script>
-        const directDownloadLink = "https://google.com";
-
         const data = {
-            about: { title: "О нас", text: "Проект Syndykate_10к — профессиональное сообщество и современные инструменты для работы." },
-            news: { title: "Новости", text: "Все актуальные новости и события сообщества теперь доступны в этом разделе." },
-            faq: { title: "Частые вопросы", text: "Здесь собраны ответы на популярные вопросы о работе системы и выплатах." },
-            usdt: { title: "Вывод USDT", text: "Минимальный порог — 10 USDT. Вывод производится через сеть Tron (TRC-20)." },
-            coins: { title: "Сдача монет", text: "Инструкция по сдаче монет доступна внутри мобильного приложения." },
-            ref: { title: "Рефералы", text: "Партнерская программа: 10% от прибыли приглашенных участников." },
-            rank: { title: "Ранг", text: "Повышайте статус активности для получения бонусов и приоритетной поддержки." },
-            bonus: { title: "Бонусы", text: "Информация о текущих акциях и ежедневных наградах для активных пользователей." },
-            support: { title: "Тех. поддержка", text: "Мы на связи 24/7. Напишите нам в Telegram для решения любого вопроса." },
+            about: { 
+                title: "О нас", 
+                text: `<b>SYNDICATE_10K</b> (основана в начале 2026 года) — профессиональный сервис по массовому выкупу игровых монет с приложения COIN: Always Be Earning. Мы созданы для тех, кто ценит свое время и хочет получать выплаты здесь и сейчас.<br><br>
+                <b>Почему с нами результат быстрее, чем у других?</b><br>
+                В то время как другие площадки заставляют вас копить огромные суммы (по 100к и более) месяцами, рискуя курсом и аккаунтом и личными данными мы предлагаем совершенно другой подход:<br><br>
+                <ul class="benefits-list">
+                    <li>🚀 Минимальный порог — всего от 8к монет:</b><br>Вам не нужно ждать год, чтобы увидеть первые деньги. Заработали немного — сразу вывели. С развитием уровня вывод доступен от 750 монет.</li>
+                    <li>☔️ Никакой регистрации:</b><br>указал кошелек — получил usdt. (Один кошилек можно использовать для других акаунтов!)</li>
+                    <li>⚡️ Моментальная ликвидность:</b><br>Мы выкупаем монеты сразу, избавляя вас от долгого поиска покупателей на биржах. Никаких документов ненужно для начала работы</li>
+                    <li>💸 Прямые выплаты в USDT:</b><br>Зачисляем средства на ваш кошелек мгновенно после сделки.</li>
+                    <li>🛡️ Безопасность без задержек:</b><br>Наш курс может быть чуть ниже рыночного, но это плата за отсутствие авторизации, подтверждения акаунтов, рисков отказа и гарантию того, что вы останитесь анонимом.</li>
+                </ul><br>
+                Не ждите призрачных миллионов — забирайте реальный профит! Создавай хоть 10 акаунтов COIN: Always Be Earning и зарабатуй как милионер уже сегодня! <br>
+                <b>Превратите свои игровые достижения в активы вместе с SYNDICATE_10K.</b>`,
+                img: "" 
+            },
+            news: { 
+                title: "Новости", 
+                text: `Будьте в курсе всех событий с <b>SYNDICATE_10K</b>! Мы ценим информированность наших партнеров, поэтому оперативно публикуем всё самое важное.<br><br>
+                <b>О чем мы пишем:</b><br><br>
+                <ul class="benefits-list">
+                    <li>📈 Актуальный курс:</b> Узнавайте первыми об изменениях условий выкупа.</li>
+                    <li>🎁 Бонусы и акции:</b> Условия получения дополнительных выплат всегда публикуются заранее — не упустите свою выгоду!</li>
+                    <li>👑 Премии от админа:</b> Поощряем самых активных поставщиков специальными бонусами.</li>
+                    <li>🛠️ Обновления сервиса:</b> Информируем о технических улучшениях и новых возможностях.</li>
+                </ul><br>
+                Важно: Первыми все новости получают подписчики нашего Telegram-канала @syndicate_10k. Информация на сайте обновляется с небольшой задержкой, поэтому рекомендуем подписаться!`,
+                img: "" 
+            },
+            faq: { 
+                title: "Частые вопросы", 
+                text: `<b>1. Какую минимальную сумму монет я могу сдать?</b><br>В проекте SYNDICATE_10K минимальный объем для сдачи составляет всего 10 монет. Сумма должна быть кратна десяти.<br><br>
+                <b>2. Какая максимальная сумма для сдачи за один раз?</b><br>Максимальный объем одного запроса на сдачу монет составляет 5000 монет.<br><br>
+                <b>3. Как часто я могу подавать запросы на сдачу?</b><br>Количество запросов не ограничено! Вы можете сдавать монеты столько раз, сколько посчитаете нужным.<br><br>
+                <b>4. Можно ли использовать один кошелек для вывода с разных аккаунтов?</b><br>Да, вы можете использовать один и тот же кошелек для получения выплат с нескольких ваших аккаунтов.<br><br>
+                <b>5. Разрешено ли иметь несколько аккаунтов (мультиаккаунтинг)?</b><br>Да, в нашей системе разрешено иметь неограниченное количество аккаунтов.<br><br>
+                <b>6. Как получить бонусы и премии?</b><br>Дополнительные награды и премии от администрации получают только активные пользователи. Основное условие простое: регулярная сдача монет — залог получения бонусов.<br><br>
+                <b>7. Какая у вас реферальная программа?</b><br>Вы получаете 10% от дохода ваших рефералов
+Пример: если ваш реферал сдал 1 000 монет на сумму $0.10, вам автоматически начисляется $0.01 на баланс.<br><br>
+                <b>8. Как быстро проверяется сдача монет?</b><br>Подтверждение заявки на сдачу монет занимает не более 24 часов.<br><br>
+                <b>9. Какая минимальная сумма для вывода USDT на кошелек?</b><br>Минимальный порог вывода зависит от вашего текущего ранга в системе:Новичок: $0.80Фермер: $0.60Диллер: $0.50Бизнесмен: $0.40Магнат: $0.30<br><br>
+                <b>10. Как быстро приходят деньги (USDT) после заказа выплаты?</b><br>Выплата средств на ваш внешний кошелек производится в течение 24 часов с момента оформления заявки.`,
+                img: "" 
+            },
+            usdt: { 
+                title: "Вывод USDT", 
+                text: `Раздел: Вывод USDT Для вывода средств на ваш внешний кошелек необходимо накопить минимальную сумму, соответствующую вашему текущему рангу.<br><br>
+                <b>Как накопить быстрее?</b><br>Регулярно сдавайте монеты. Приглашайте друзей и получайте 10% от их дохода по реферальной программе. Проявляйте активность и забирайте бонусы от администрации.<br><br>
+                <b>📝 Как оформить заявку на вывод:</b><br>
+                1. Укажите ваш Telegram-ник.<br>
+                2. Выберите сеть (убедитесь, что она совпадает с кошельком).<br>
+                3. Введите адрес кошелька (внимательно проверьте данные).<br>
+                4. Укажите сумму (не меньше лимита ранга и не более $100 за транзакцию).<br><br>
+                <b>Важные условия:</b><br>Максимальная выплата: $100 за один запрос. Все выплаты обрабатываются в течение 24 часов.`,
+                img: "" 
+            },
+            coins: { 
+                title: "Сдача монет", 
+                text: `Чтобы успешно передать монеты и получить за них вознаграждение, выполните шаги:<br><br>
+                <b>1. Проверьте баланс</b><br>Убедитесь, что на счету в COIN: Always Be Earning имеется необходимое количество монет (минимум 10 монет).<br><br>
+                <b>2. Отправка через «Геодром»</b><br>Передайте желаемое количество монет через внутриигровой механизм.<br><br>
+                <b>3. Регистрация заявки</b><br>В личном кабинете Syndicate_10k укажите точное число монет и координаты (локацию), где находится «Геодром» с монетами.<br><br>
+                <b>4. Подтверждение</b><br>Администратор проверит ваш запрос в течение 24 часов. Уведомление о результате придет в личный кабинет.`,
+                img: "" 
+            },
+            ref: { 
+                title: "Реферальная программа", 
+                text: `<b>Реферальная программа</b> — это ваш пожизненный пассивный доход в размере 10% от суммы каждого заработка вашего партнера.<br><br>
+                <b>Пример:</b> Ваш реферал сдал монеты и заработал $10. Вы мгновенно получаете $1 на свой баланс просто за то, что пригласили его!<br><br>
+                Ваша индивидуальная ссылка находится в разделе: Личный кабинет → Рефералы. Чем больше активных игроков, тем выше ваш доход!`,
+                img: "" 
+            },
+            rank: { 
+                title: "Ранг и прогресс", 
+                text: `Ранг — это показатель вашего успеха и активности. Повышая уровень, вы увеличиваете курс продажи и снижаете лимит на вывод:<br><br>
+                • <b>Новичок:</b> Курс $0.010, мин. вывод $0.80.<br>
+                • <b>Фермер:</b> Курс $0.012, мин. вывод $0.70.<br>
+                • <b>Дилер:</b> Курс $0.015, мин. вывод $0.60.<br>
+                • <b>Бизнесмен:</b> Курс $0.017, мин. вывод $0.50.<br>
+                • <b>Магнат:</b> Курс $0.020, мин. вывод $0.30.<br><br>
+                ⚠️ <b>Важно:</b> Если вы не сдаете монеты более 7 дней, прогресс начинает снижаться (10% за каждые 7 дней неактивности).`,
+                img: "" 
+            },
+            bonus: { 
+                title: "Бонусная программа", 
+                text: `🔥 <b>Бонусы за личную активность:</b> Ежемесячные и праздничные выплаты самым активным пользователям.<br><br>
+                🎁 <b>За достижение ранга:</b> Получайте $0.10 каждый раз при переходе на новый уровень.<br><br>
+
+                👥 <b>Бонусы за развитие команды:</b> Получайте $0.01 за каждого приглашенного реферала, как только он сдаст свои первые 500 монет.<br><br>
+                🧰 <b>В настоящее время идет доработка бонусной системы!`,
+                img: "" 
+            },
+            support: { 
+                title: "Тех. поддержка", 
+                text: `Наша команда всегда на связи! Обращайтесь по любым вопросам: проблемы с входом, статус здачи монет или уточнение данных по выводу.<br><br>
+                <b>📩 Связаться с нами:</b><br>Прямая связь с администратором доступна через внутренний чат в личном кабинете. Среднее время ответа — в течение 24 часов.<br><br>
+                <i>Для ускорения решения укажите никнейм и подробное описание проблемы.<br><br>
+                <i>Кнопка активна после регистрации в личном кабинете Syndicate_10k.</i>`,
+                img: "" 
+            },
             app: { 
                 title: "Наше приложение", 
-                text: "Официальное Android-приложение Syndykate_10к. Безопасная установка через APK-файл.",
+                text: `<b>SYNDICATE_10K всегда под рукой!</b> Для вашего удобства мы разработали официальное Android-приложение.<br><br>
+                🚀 <b>Мгновенные уведомления:</b> О статусе заявок и начислении бонусов.<br><br>
+                🔒 <b>Безопасный доступ:</b> Защищенный вывод USDT в личном кабинет.<br><br>
+                📲 <b>Полный функционал:</b> Все возможности от сдачи монет до вывода USDT — в одном удобном интерфейсе.<br><br>
+                📉 <b>Экономия трафика:</b> Работа даже при медленном интернет-соединении.<br><br>
+                <b>Приложение доступно для скачивания по ссылке ниже. Мы постоянно работаем над улучшением сервиса, поэтому периодически выпускаем обновления<br><br>
+                ⚠️<b>Важно: Информацию о выходе новых версий вы всегда найдете в разделе «Уведомления» в вашем личном кабинете. 
+Рекомендуем всегда использовать актуальную версию для стабильной работы`,
+                img: "",
                 isApp: true 
             }
         };
 
-        function showContent(key) {
+        function showContent(key, el) {
             const box = document.getElementById('info-box');
             box.style.opacity = 0;
             
             setTimeout(() => {
-                let contentHTML = `<h2>${data[key].title}</h2><p>${data[key].text}</p>`;
-                if (data[key].isApp) {
-                    contentHTML += `
-                        <div class="card">
-                            <a href="${directDownloadLink}" target="_blank" class="download-btn">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"><path d="M17.523 15.3414L12 20.8644L6.477 15.3414L7.891 13.9274L11 17.0364V3H13V17.0364L16.109 13.9274L17.523 15.3414Z"/></svg>
-                                Скачать приложение
-                            </a>
-                        </div>`;
+                const item = data[key];
+                let contentHTML = `<h2>${item.title}</h2><p>${item.text}</p>`;
+
+                if (item.isApp) {
+                    contentHTML += `<div class="card"><a href="#" class="download-btn">Скачать приложение</a></div>`;
                 }
+                
                 box.innerHTML = contentHTML;
                 box.style.opacity = 1;
+                if(window.innerWidth < 768) box.scrollIntoView({behavior: "smooth"});
             }, 200);
 
             document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('active'));
-            if (window.event && window.event.currentTarget) {
-                window.event.currentTarget.classList.add('active');
-            }
+            if (el) el.classList.add('active');
         }
 
         function filterMenu() {
@@ -192,6 +275,8 @@
                 btn.style.display = btn.innerText.toLowerCase().includes(input) ? "flex" : "none";
             });
         }
+
+        window.onload = () => showContent('about', document.querySelector('.menu-item'));
     </script>
 </body>
 </html>
